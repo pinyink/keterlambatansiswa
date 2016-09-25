@@ -10,4 +10,4 @@ Tutorial Instalasi
 
 sekian dan terima kasih
 
-Aplikasi ini dibuat dalam rangka kerja praktek fakultas sains dan teknologi unisnu jepara oleh pinyink dan sodok :D
+Aplikasi ini dibuat dalam rangka kerja praktek Fakultas Sains dan Teknologi UNISNU Jepara di SMK N 3 JEPARA oleh pinyink dan sodok :D
