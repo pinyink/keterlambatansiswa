@@ -1,0 +1,77 @@
+<section class="content-header">
+    <h1>Kenaikan Dan Kelulusan Siswa</h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Siswa</a></li>
+        <li class="active">Kenaikan & Kelulusan</li>
+    </ol>
+</section><!--section conten header-->
+<!--main content-->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3>Data Siswa</h3>
+                </div>
+                <form class="form-horizontal" method="post" action="././simpan.php?ip=hadir">
+                <div class="box-body">
+                    <div class="form-group">
+                      <label for="tgl" class="col-sm-2 control-label">Tanggal</label>
+                      <div class="col-sm-4">
+                        <input class="form-control" id="tgl" name="tgl" placeholder="Tanggal" value="<?php echo date('d/m/Y');?>">
+                      </div>
+                    </div>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                            	<th>Checkbox</th>
+                                <th>No</th>
+                                <th>NIS</th>
+                                <th>Nama</th>
+                                <th>Jenis Kelasmin</th>
+                                <th>Kelas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $kelas = $_POST['kelas'];
+                            $sqlsiswa = "";
+                            if ($kelas=="semua") {
+                                $sqlsiswa = "select no,nis,nama,jk,kelas from siswa";
+                            }
+                            else{
+                                $sqlsiswa = "select no,nis,nama,jk,kelas from siswa where kelas = '".$kelas."'";
+                            }
+                            $resultsiswa = $conn->query($sqlsiswa);
+                            if ($resultsiswa->num_rows>0) {
+                                while ($row = $resultsiswa->fetch_assoc()) {
+                                    ?>
+                                    <tr>
+                                    	<td><input type="checkbox" checked value="<?php echo $row['nis'];?>" name="naik[]"></td>
+                                        <td><?php echo $row['no'];?></td>
+                                        <td><?php echo $row['nis'];?></td>
+                                        <td><?php echo $row['nama'];?></td>
+                                        <td><?php echo $row['jk'];?></td>
+                                        <td><?php echo $row['kelas'];?></td>
+                                    </tr><?php
+                                }
+                            }
+                            ?>
+                        </tbody>
+                    </table>
+                </div><!--box body-->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-xs-6">
+                           
+                      <button type="submit" class="btn btn-primary col-md-3">Simpan</button>
+                    </div>
+                        </div><!--col-xs-6-->
+                    </div><!--row-->
+                </div><!-- /.box-footer -->
+            </form>
+            </div>
+        </div>
+    </div><!--row-->
+</section><!--main content-->
